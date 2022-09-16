@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { counter } from '../functions';
 
 const StyledHeader = styled.header`
   padding: 0 4rem;
@@ -34,7 +35,11 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-export const Header = () => {
+const Number = styled.span`
+  color: var(--mainYellow);
+`;
+
+export const Header = ({ items }) => {
   return (
     <StyledHeader>
       <Wrapper>
@@ -43,7 +48,9 @@ export const Header = () => {
       </Wrapper>
       <StyledButton>
         <i className='fa-solid fa-cart-shopping'></i>
-        <div>My Cart</div>
+        <div>
+          My Cart <Number>{counter(items)}</Number>
+        </div>
       </StyledButton>
     </StyledHeader>
   );
