@@ -1,33 +1,32 @@
-import { storeProducts } from './data';
+import { Homepage } from './Pages/Homepage';
 import { Header } from './Components/Header';
-import { Card } from './Components/Card';
-import styled from 'styled-components';
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin: 2rem;
-`;
+import { storeProducts } from './data';
+import { Cart } from './Pages/Cart';
 
 function App() {
-  const [items, setItems] = useState(null);
+  const state = localStorage.getItem('state')
+    ? JSON.parse(localStorage.getItem('state'))
+    : storeProducts;
+
+  const [items, setItems] = useState(state);
 
   useEffect(() => {
-    setItems(storeProducts);
-  }, []);
+    localStorage.setItem('state', JSON.stringify(items));
+  }, [items]);
 
   return (
     <>
       <Header items={items} />
-
-      <Wrapper>
-        {storeProducts.map((elem) => (
-          <Card items={items} setItems={setItems} {...elem} />
-        ))}
-      </Wrapper>
+      <Routes>
+        <Route
+          path='/'
+          element={<Homepage items={items} setItems={setItems} />}></Route>
+        <Route
+          path='cart'
+          element={<Cart items={items} setItems={setItems} />}></Route>
+      </Routes>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { counter } from '../functions';
+import { Link } from 'react-router-dom';
 
 const StyledHeader = styled.header`
   padding: 0 4rem;
@@ -20,13 +21,19 @@ const Wrapper = styled.div`
   gap: 4rem;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
   gap: 0.6rem;
-  width: 110px;
+  padding: 1rem;
+  min-width: 100px;
   height: 50px;
   background-color: var(--mainBlue);
   color: var(--mainWhite);
@@ -44,14 +51,18 @@ export const Header = ({ items }) => {
     <StyledHeader>
       <Wrapper>
         <i className='fa-solid fa-phone'></i>
-        <div>Products</div>
+        <StyledLink to='/'>
+          <div>Products</div>
+        </StyledLink>
       </Wrapper>
-      <StyledButton>
-        <i className='fa-solid fa-cart-shopping'></i>
-        <div>
-          My Cart <Number>{counter(items)}</Number>
-        </div>
-      </StyledButton>
+      <StyledLink to='cart'>
+        <StyledButton>
+          <i className='fa-solid fa-cart-shopping'></i>
+          <div>
+            My Cart <Number>({counter(items)}) </Number>
+          </div>
+        </StyledButton>
+      </StyledLink>
     </StyledHeader>
   );
 };
