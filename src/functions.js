@@ -17,7 +17,7 @@ export function addToCart(item, id) {
   return item;
 }
 
-export function removeFromCart(items) {
+export function removeAll(items) {
   return items.map((item) => {
     return {
       ...item,
@@ -25,4 +25,26 @@ export function removeFromCart(items) {
       total: 0,
     };
   });
+}
+
+export function removeFromCart(item, id) {
+  if (item.id === id) {
+    return {
+      ...item,
+      count: 0,
+      total: 0,
+    };
+  }
+  return item;
+}
+
+export function removeItemFromCart(item, id) {
+  if (item.id === id) {
+    return {
+      ...item,
+      count: item.count - 1,
+      total: item.total - item.price,
+    };
+  }
+  return item;
 }

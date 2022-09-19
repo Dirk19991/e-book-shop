@@ -81,10 +81,6 @@ const Buy = styled.div`
 `;
 
 export const Card = ({ id, title, img, price, items, setItems }) => {
-  useEffect(() => {
-    localStorage.setItem('state', JSON.stringify(items));
-  }, [items]);
-
   return (
     <StyledCard>
       <Wrapper>
@@ -93,7 +89,7 @@ export const Card = ({ id, title, img, price, items, setItems }) => {
 
       <Button
         onClick={() => {
-          setItems(items.map((item) => addToCart(item, id)));
+          setItems((items) => items.map((item) => addToCart(item, id)));
         }}>
         <Buy>Buy</Buy>
         <Icon className='fa-solid fa-2x fa-cart-plus'></Icon>
