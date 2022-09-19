@@ -16,6 +16,17 @@ function App() {
     localStorage.setItem('state', JSON.stringify(items));
   }, [items]);
 
+  const [isMobile, setMobile] = useState(window.innerWidth < 1024);
+
+  const updateMedia = () => {
+    setMobile(window.innerWidth < 1024);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', updateMedia);
+    return () => window.removeEventListener('resize', updateMedia);
+  });
+
   return (
     <>
       <Header items={items} />
@@ -25,7 +36,14 @@ function App() {
           element={<Homepage items={items} setItems={setItems} />}></Route>
         <Route
           path='cart'
-          element={<Cart items={items} setItems={setItems} />}></Route>
+          element={
+            <Cart
+              isMobile={isMobile}
+              setMobile={setMobile}
+              items={items}
+              setItems={setItems}
+            />
+          }></Route>
       </Routes>
     </>
   );
