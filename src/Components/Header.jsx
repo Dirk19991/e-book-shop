@@ -12,6 +12,10 @@ const StyledHeader = styled.header`
   height: 80px;
   width: 100%;
   color: var(--mainWhite);
+
+  @media (max-width: 1024px) {
+    padding: 0 2rem;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -19,6 +23,10 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 4rem;
+
+  @media (max-width: 1024px) {
+    gap: 2rem;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -40,6 +48,10 @@ const StyledButton = styled.button`
   border: 2px solid var(--mainWhite);
   border-radius: 15px;
   cursor: pointer;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
 `;
 
 const Number = styled.span`

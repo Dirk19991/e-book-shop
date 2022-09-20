@@ -12,7 +12,7 @@ const Image = styled.img`
 
   @media (max-width: 1024px) {
     margin: 1rem 0;
-    height: 250px;
+    height: 200px;
   }
 `;
 
@@ -24,43 +24,49 @@ const Wrapper = styled.div`
 const ImageWrapper = styled(Wrapper)`
   @media (max-width: 1024px) {
     grid-row: 1 / 7;
-    grid-column: 1;
+    grid-column: 1 / 3;
   }
 `;
 
 const TitleWrapper = styled(Wrapper)`
   @media (max-width: 1024px) {
-    grid-row: 2;
+    grid-row: 1;
+    align-self: flex-end;
   }
 `;
 
 const PriceWrapper = styled(Wrapper)`
   @media (max-width: 1024px) {
-    grid-row: 3;
+    grid-row: 2;
+    align-self: flex-end;
   }
 `;
 
 const QuantityWrapper = styled(Wrapper)`
   @media (max-width: 1024px) {
-    grid-row: 5;
+    grid-row: 3;
+    align-self: flex-end;
   }
 `;
 
 const IconWrapper = styled(Wrapper)`
   @media (max-width: 1024px) {
-    grid-row: 5;
+    grid-row: 6;
+    align-self: flex-start;
   }
 `;
 
 const TotalWrapper = styled(Wrapper)`
   @media (max-width: 1024px) {
-    grid-row: 6;
+    grid-row: 4;
+    align-self: flex-end;
   }
 `;
 
 const Icon = styled.i`
   cursor: pointer;
   color: var(--mainYellow);
+  align-self: center;
 `;
 
 const Total = styled.span`

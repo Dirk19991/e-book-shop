@@ -14,8 +14,7 @@ const ClearCartButton = styled.button`
 `;
 
 const Wrapper = styled.div`
-  grid-column-start: 6;
-  grid-column-end: 7;
+  grid-column: 6 / 7;
   justify-self: center;
   padding-bottom: 1rem;
 `;

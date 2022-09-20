@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { addToCart } from '../functions';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const StyledCard = styled.div`
   position: relative;
@@ -60,7 +60,7 @@ const Button = styled.button`
   align-items: center;
   gap: 0.6rem;
   padding: 1rem;
-  min-width: 100px;
+  width: 120px;
   height: 50px;
   background-color: var(--mainBlue);
   color: var(--mainWhite);
@@ -75,25 +75,47 @@ const Button = styled.button`
   }
 `;
 
+const GreenButton = styled(Button)`
+  background-color: green;
+`;
+
 const Buy = styled.div`
   font-size: 1.5rem;
   translate: 0 -0.1rem;
 `;
 
 export const Card = ({ id, title, img, price, items, setItems }) => {
+  const [added, setAdded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAdded(false);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [added]);
+
   return (
     <StyledCard>
       <Wrapper>
         <Img src={img} alt={title}></Img>
       </Wrapper>
 
-      <Button
-        onClick={() => {
-          setItems((items) => items.map((item) => addToCart(item, id)));
-        }}>
-        <Buy>Buy</Buy>
-        <Icon className='fa-solid fa-2x fa-cart-plus'></Icon>
-      </Button>
+      {added ? (
+        <GreenButton>
+          <Buy>Added!</Buy>
+        </GreenButton>
+      ) : (
+        <Button
+          onClick={() => {
+            setItems((items) => items.map((item) => addToCart(item, id)));
+            setAdded(true);
+          }}>
+          <Buy>Buy</Buy>
+          <Icon className='fa-solid fa-2x fa-cart-plus'></Icon>
+        </Button>
+      )}
 
       <Text>
         <div>{title}</div>
