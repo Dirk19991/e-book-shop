@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { addToCart } from '../functions';
 import { useEffect, useState } from 'react';
+import { BasicModal } from './Modal';
 
 const StyledCard = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ const StyledCard = styled.div`
   background-color: white;
 `;
 
-const Img = styled.img`
+export const Img = styled.img`
   position: relative;
   max-width: 100%;
   height: 300px;
@@ -96,31 +97,47 @@ export const Card = ({ id, title, img, price, items, setItems }) => {
     };
   }, [added]);
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
-    <StyledCard>
-      <Wrapper>
-        <Img src={img} alt={title}></Img>
-      </Wrapper>
+    <>
+      <StyledCard>
+        {open && (
+          <BasicModal
+            img={img}
+            title={title}
+            open={open}
+            setOpen={setOpen}
+            handleOpen={handleOpen}
+            handleClose={handleClose}
+          />
+        )}
+        <Wrapper onClick={() => setOpen((prev) => !prev)}>
+          <Img src={img} alt={title}></Img>
+        </Wrapper>
 
-      {added ? (
-        <GreenButton>
-          <Buy>Added!</Buy>
-        </GreenButton>
-      ) : (
-        <Button
-          onClick={() => {
-            setItems((items) => items.map((item) => addToCart(item, id)));
-            setAdded(true);
-          }}>
-          <Buy>Buy</Buy>
-          <Icon className='fa-solid fa-2x fa-cart-plus'></Icon>
-        </Button>
-      )}
+        {added ? (
+          <GreenButton>
+            <Buy>Added!</Buy>
+          </GreenButton>
+        ) : (
+          <Button
+            onClick={() => {
+              setItems((items) => items.map((item) => addToCart(item, id)));
+              setAdded(true);
+            }}>
+            <Buy>Buy</Buy>
+            <Icon className='fa-solid fa-2x fa-cart-plus'></Icon>
+          </Button>
+        )}
 
-      <Text>
-        <div>{title}</div>
-        <Price>{price} rub.</Price>
-      </Text>
-    </StyledCard>
+        <Text>
+          <div>{title}</div>
+          <Price>{price} rub.</Price>
+        </Text>
+      </StyledCard>
+    </>
   );
 };

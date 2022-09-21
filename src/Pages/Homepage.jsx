@@ -1,5 +1,5 @@
 import { storeProducts } from '../data';
-
+import { BasicModal } from '../Components/Modal';
 import { Card } from '../Components/Card';
 import styled from 'styled-components';
 
@@ -36,6 +36,7 @@ export const Homepage = ({ items, setItems }) => {
           <Card items={items} setItems={setItems} {...elem} />
         ))}
       </Wrapper>
+      <BasicModal></BasicModal>
     </>
   );
 };
