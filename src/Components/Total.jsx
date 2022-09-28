@@ -16,7 +16,7 @@ export const Total = ({ items, setItems }) => {
 
   return (
     <Wrapper>
-      <Cursive>Total: </Cursive> {total} RUB
+      <Cursive>Total : </Cursive> {total} RUB
     </Wrapper>
   );
 };
