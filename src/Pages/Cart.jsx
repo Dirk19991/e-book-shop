@@ -3,6 +3,7 @@ import { GridHeader } from '../Components/GridHeader';
 import styled from 'styled-components';
 import { ClearCart } from '../Components/ClearCart';
 import { Item } from '../Components/Item';
+import { Total } from '../Components/Total';
 import { useState, useEffect } from 'react';
 
 const Grid = styled.div`
@@ -65,6 +66,9 @@ export const Cart = ({ items, setItems, isMobile }) => {
               })}
           {items?.some((item) => item.count !== 0) && (
             <ClearCart items={items} setItems={setItems} />
+          )}
+          {items?.some((item) => item.count !== 0) && (
+            <Total items={items} setItems={setItems} />
           )}
         </Grid>
       </Wrapper>
