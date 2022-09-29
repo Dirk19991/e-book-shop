@@ -1,7 +1,7 @@
-import { storeProducts } from '../data';
-import { BasicModal } from '../Components/Modal';
-import { Card } from '../Components/Card';
-import styled from 'styled-components';
+import { storeProducts } from "../data";
+import { BasicModal } from "../Components/Modal";
+import { Card } from "../Components/Card";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,14 +12,14 @@ const Wrapper = styled.div`
 `;
 
 export const Products = styled.h1`
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   display: flex;
   justify-content: center;
   font-size: 3rem;
   margin-bottom: 2rem;
 
   & > span {
-    font-family: 'Permanent Marker', cursive;
+    font-family: "Permanent Marker", cursive;
     color: var(--mainBlue);
     margin-left: 1rem;
   }

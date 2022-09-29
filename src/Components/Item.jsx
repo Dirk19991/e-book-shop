@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { removeFromCart } from '../functions';
-import { Quantity } from './Quantity';
+import { removeFromCart } from "../functions";
+import { Quantity } from "./Quantity";
 
 const Image = styled.img`
   position: relative;
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled(Wrapper)`
   @media (max-width: 1024px) {
+    width: 200px;
     grid-row: 1 / 7;
     grid-column: 1 / 3;
   }
@@ -95,8 +96,9 @@ export const Item = ({ elem, items, setItems }) => {
       <IconWrapper
         onClick={() =>
           setItems(() => items.map((item) => removeFromCart(item, elem.id)))
-        }>
-        <Icon className='fa-solid fa-trash-can'></Icon>
+        }
+      >
+        <Icon className="fa-solid fa-trash-can"></Icon>
       </IconWrapper>
 
       <TotalWrapper>

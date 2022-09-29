@@ -1,7 +1,5 @@
-import styled from 'styled-components';
-import { useEffect } from 'react';
-import { removeAll } from '../functions';
-import { storeProducts } from '../data';
+import styled from "styled-components";
+import { removeAll } from "../functions";
 
 const ClearCartButton = styled.button`
   width: 200px;
@@ -19,7 +17,7 @@ const Wrapper = styled.div`
   padding-bottom: 1rem;
 `;
 
-export const ClearCart = ({ items, setItems }) => {
+export const ClearCart = ({ setItems }) => {
   return (
     <Wrapper>
       <ClearCartButton onClick={() => setItems((items) => removeAll(items))}>

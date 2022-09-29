@@ -1,10 +1,9 @@
-import { Products } from './Homepage';
-import { GridHeader } from '../Components/GridHeader';
-import styled from 'styled-components';
-import { ClearCart } from '../Components/ClearCart';
-import { Item } from '../Components/Item';
-import { Total } from '../Components/Total';
-import { useState, useEffect } from 'react';
+import { Products } from "./Homepage";
+import { GridHeader } from "../Components/GridHeader";
+import styled from "styled-components";
+import { ClearCart } from "../Components/ClearCart";
+import { Item } from "../Components/Item";
+import { Total } from "../Components/Total";
 
 const Grid = styled.div`
   display: grid;

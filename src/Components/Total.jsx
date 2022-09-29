@@ -11,12 +11,12 @@ const Cursive = styled.span`
   font-family: "Permanent Marker", cursive;
 `;
 
-export const Total = ({ items, setItems }) => {
+export const Total = ({ items }) => {
   const total = items.reduce((acc, item) => acc + item.total, 0);
 
   return (
     <Wrapper>
-      <Cursive>Total:</Cursive> {total} RUB
+      <Cursive>Total : </Cursive> {total} RUB
     </Wrapper>
   );
 };

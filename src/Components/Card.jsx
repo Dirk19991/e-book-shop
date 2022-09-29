@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { addToCart } from '../functions';
-import { useEffect, useState } from 'react';
-import { BasicModal } from './Modal';
+import styled from "styled-components";
+import { addToCart } from "../functions";
+import { useEffect, useState } from "react";
+import { BasicModal } from "./Modal";
 
 const StyledCard = styled.div`
   position: relative;
@@ -51,11 +51,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Icon = styled.i`
+export const Icon = styled.i`
   cursor: pointer;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,7 +85,7 @@ const Buy = styled.div`
   translate: 0 -0.1rem;
 `;
 
-export const Card = ({ id, title, img, price, items, setItems }) => {
+export const Card = ({ id, title, img, price, info, items, setItems }) => {
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
@@ -106,6 +106,11 @@ export const Card = ({ id, title, img, price, items, setItems }) => {
       <StyledCard>
         {open && (
           <BasicModal
+            setAdded={setAdded}
+            info={info}
+            id={id}
+            items={items}
+            setItems={setItems}
             img={img}
             title={title}
             open={open}
@@ -127,9 +132,10 @@ export const Card = ({ id, title, img, price, items, setItems }) => {
             onClick={() => {
               setItems((items) => items.map((item) => addToCart(item, id)));
               setAdded(true);
-            }}>
+            }}
+          >
             <Buy>Buy</Buy>
-            <Icon className='fa-solid fa-2x fa-cart-plus'></Icon>
+            <Icon className="fa-solid fa-2x fa-cart-plus"></Icon>
           </Button>
         )}
 

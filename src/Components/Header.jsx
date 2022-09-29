@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { counter } from '../functions';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { counter } from "../functions";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
-  padding: 0 4rem;
+  padding: 0 7rem;
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -15,17 +15,6 @@ const StyledHeader = styled.header`
 
   @media (max-width: 1024px) {
     padding: 0 2rem;
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 4rem;
-
-  @media (max-width: 1024px) {
-    gap: 2rem;
   }
 `;
 
@@ -61,15 +50,13 @@ const Number = styled.span`
 export const Header = ({ items }) => {
   return (
     <StyledHeader>
-      <Wrapper>
-        <i className='fa-solid fa-phone'></i>
-        <StyledLink to='/'>
-          <div>Products</div>
-        </StyledLink>
-      </Wrapper>
-      <StyledLink to='cart'>
+      <StyledLink to="/">
+        <div>Products</div>
+      </StyledLink>
+
+      <StyledLink to="cart">
         <StyledButton>
-          <i className='fa-solid fa-cart-shopping'></i>
+          <i className="fa-solid fa-cart-shopping"></i>
           <div>
             My Cart <Number>({counter(items)}) </Number>
           </div>
