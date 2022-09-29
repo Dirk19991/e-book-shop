@@ -141,7 +141,7 @@ export const Card = ({ id, title, img, price, info, items, setItems }) => {
 
         <Text>
           <div>{title}</div>
-          <Price>{price} rub.</Price>
+          <Price>{price} RUB</Price>
         </Text>
       </StyledCard>
     </>
